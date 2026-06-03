@@ -1,1 +1,1 @@
-# SupportAPI
+This API was created solely for practical purposes and does not carry the purpose of commercial or other distribution. If you accidentally stumbled upon it, just skip it. If you want to download it, then just download it. There is nothing special about it.
