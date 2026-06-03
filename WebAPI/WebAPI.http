@@ -1,0 +1,35 @@
+@WebAPI_HostAddress = https://localhost:7260
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6IkFkbWluIiwibmJmIjoxNzgwMzMyMTE4LCJleHAiOjE3ODAzMzkzMTgsImlhdCI6MTc4MDMzMjExOH0.F0HSCct6tdpa4ng0eqhaOEuMACE20rrWws8flDqxLZQ
+
+### STEP 1: AUTHENTICATION
+POST {{WebAPI_HostAddress}}/api/Auth/login
+Content-Type: application/json
+
+{
+  "username": "admin"
+}
+
+### STEP 2: CREATE EVENT
+POST {{WebAPI_HostAddress}}/api/SupportEvents
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "ticketId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "operatorName": "Ivan Ivanov",
+  "message": "Critical error in network switch on 3rd floor.",
+  "eventType": 2,
+  "priority": 3
+}
+
+### STEP 3: GET ALL EVENTS (CACHE TEST)
+GET {{WebAPI_HostAddress}}/api/SupportEvents
+Authorization: Bearer {{token}}
+
+### STEP 4: EXPORT REPORT TO CSV
+GET {{WebAPI_HostAddress}}/api/SupportEvents/export/csv
+Authorization: Bearer {{token}}
+
+### STEP 5: GET ANALYTICS SUMMARY
+GET {{WebAPI_HostAddress}}/api/SupportEvents/analytics/summary
+Authorization: Bearer {{token}}
